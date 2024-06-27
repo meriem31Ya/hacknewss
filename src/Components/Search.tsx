@@ -1,12 +1,9 @@
-import React from "react";
+import { ContextReducer } from "@/contexts/contextNews";
+import { actionType } from "@/utils/TypesNews";
+import React, { useContext } from "react";
 
-const Search = ({
-	setSearch,
-	setpage,
-}: {
-	setSearch: React.Dispatch<React.SetStateAction<string>>;
-	setpage: React.Dispatch<React.SetStateAction<number>>;
-}) => {
+const Search = () => {
+	const { dispatch } = useContext(ContextReducer);
 	return (
 		<div className="flex px-4 py-3 rounded-md border-2 mt-8 border-blue-500 overflow-hidden max-w-md mx-auto font-[sans-serif]">
 			<svg
@@ -22,8 +19,7 @@ const Search = ({
 				placeholder="Search Something..."
 				className="w-full outline-none bg-transparent text-gray-600 text-sm"
 				onChange={(e) => {
-					setSearch(e.target.value);
-					setpage(0);
+					dispatch({ type: "SEARCH_NEW", payload: e.target.value });
 				}}
 			/>
 		</div>

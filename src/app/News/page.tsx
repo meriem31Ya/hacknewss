@@ -7,6 +7,7 @@ import Newslist from "@/Components/Newslist";
 import { actionType, newsType, stateType } from "@/utils/TypesNews";
 import { fetchAllNews } from "@/services/geData";
 import { reducer } from "@/Reducer/reducer";
+import { ContextReducer } from "@/contexts/contextNews";
 
 const News = () => {
 	const [state, dispatch] = useReducer<React.Reducer<stateType, actionType>>(
@@ -30,9 +31,11 @@ const News = () => {
 
 	return (
 		<div>
-			{/* <Search setSearch={setSearch} setpage={setpage} />
-			<Pagination setpage={setpage} /> */}
-			<Newslist News={state.News} dispatch={dispatch} />
+			<ContextReducer.Provider value={{ dispatch }}>
+				<Search />
+				<Pagination />
+				<Newslist News={state.News} />
+			</ContextReducer.Provider>
 		</div>
 	);
 };

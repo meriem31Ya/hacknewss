@@ -18,3 +18,7 @@ export type actionType = {
 	type: string;
 	payload: any;
 };
+
+export type dispatchType = {
+	dispatch: React.Dispatch<actionType>;
+};

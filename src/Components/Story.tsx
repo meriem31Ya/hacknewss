@@ -1,13 +1,9 @@
+import { ContextReducer } from "@/contexts/contextNews";
 import { actionType, newsType } from "@/utils/TypesNews";
-import React from "react";
+import React, { useContext } from "react";
 
-const Story = ({
-	item,
-	dispacth,
-}: {
-	item: newsType;
-	dispacth: React.Dispatch<actionType>;
-}) => {
+const Story = ({ item }: { item: newsType }) => {
+	const { dispatch } = useContext(ContextReducer);
 	return (
 		<article className=" mb-4 p-4 border border-gray-300 rounded-lg shadow-md w-[250px] h-[200px]">
 			<h4 className="title text-xl font-semibold mb-2">{item.title}</h4>
@@ -27,7 +23,7 @@ const Story = ({
 				<button
 					className="remove-btn text-red-500 hover:text-red-700"
 					onClick={() => {
-						dispacth({ type: "REMOVE_new", payload: item.story_id });
+						dispatch({ type: "REMOVE_new", payload: item.story_id });
 					}}
 				>
 					remove
