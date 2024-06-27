@@ -1,8 +1,12 @@
-import { ContextNews } from "@/contexts/contextNews";
-import React, { useContext } from "react";
+import React from "react";
 
-const Search = () => {
-	const { setSearch, setpage } = useContext(ContextNews);
+const Search = ({
+	setSearch,
+	setpage,
+}: {
+	setSearch: React.Dispatch<React.SetStateAction<string>>;
+	setpage: React.Dispatch<React.SetStateAction<number>>;
+}) => {
 	return (
 		<div className="flex px-4 py-3 rounded-md border-2 mt-8 border-blue-500 overflow-hidden max-w-md mx-auto font-[sans-serif]">
 			<svg

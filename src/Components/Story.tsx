@@ -1,7 +1,13 @@
-import { newsType } from "@/utils/TypesNews";
+import { actionType, newsType } from "@/utils/TypesNews";
 import React from "react";
 
-const Story = ({ item }: { item: newsType }) => {
+const Story = ({
+	item,
+	dispacth,
+}: {
+	item: newsType;
+	dispacth: React.Dispatch<actionType>;
+}) => {
 	return (
 		<article className=" mb-4 p-4 border border-gray-300 rounded-lg shadow-md w-[250px] h-[200px]">
 			<h4 className="title text-xl font-semibold mb-2">{item.title}</h4>
@@ -18,7 +24,12 @@ const Story = ({ item }: { item: newsType }) => {
 				>
 					read more
 				</a>
-				<button className="remove-btn text-red-500 hover:text-red-700">
+				<button
+					className="remove-btn text-red-500 hover:text-red-700"
+					onClick={() => {
+						dispacth({ type: "REMOVE_new", payload: item.story_id });
+					}}
+				>
 					remove
 				</button>
 			</div>

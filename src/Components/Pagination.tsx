@@ -14,16 +14,11 @@ const Pagination = ({
 					onClick={() => {
 						setpage((prev) => {
 							if (prev > 0) {
-								if (btnprev.current) {
-									btnprev.current.style.backgroundColor = "blue";
-									btnprev.current.style.color = "white";
-									return prev - 1;
-								}
+								return prev - 1;
 							}
 							return prev;
 						});
 					}}
-					ref={btnprev}
 				>
 					Previous
 				</button>
